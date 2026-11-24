@@ -1,19 +1,16 @@
+import { products } from "./data";
+
 export async function GET() {
-    return Response.json([
-        {
-            id: 1,
-            title: "Redmi note 12",
-            price: 300,
-        },
-        {
-            id: 2,
-            title: "Redmi note 13",
-            price: 300,
-        },
-        {
-            id: 1,
-            title: "Redmi note 14",
-            price: 300,
-        },
-    ]);
+    return Response.json(products);
+}
+
+export async function POST(request: Request) {
+    const body = await request.json();
+
+    products.push(body);
+
+    return Response.json({
+        message: "Mahsulot yaratildi",
+        product: body,
+    });
 }

@@ -1,3 +1,5 @@
+import DeleteButton from "@/app/components/DeleteButton";
+
 async function getProduct(id: string) {
     const res = await fetch(`http://localhost:3000/api/products/${id}`);
 
@@ -18,6 +20,7 @@ export default async function ProductPage({
             <span>{product.id}</span>
             <h1>{product.title}</h1>
             <h2>{product.price}</h2>
+            <DeleteButton id={Number(id)} />
         </div>
     );
 }
